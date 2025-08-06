@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: pink;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: hotpink;
+    color: white;
+    border: 2px solid rgb(130, 52, 65);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: rgb(156, 52, 104);
+}
+
+.group{
+    display: flex;
+    width: 500px;
+    justify-content: center;
+}
+
+.word{
+    border: 2px solid rgb(0, 73, 51);
+    background-color: rgb(65, 198, 149);
+    border-radius: 10px;
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+    user-select: none;
+}
+
+.word:hover{
+    background-color: rgba(65, 198, 149, 0.439);
+    cursor: pointer;
+}
+
+.selected{
+    border: 2px solid rgb(65, 198, 149);
+    background-color: rgb(255, 255, 255);
+}
