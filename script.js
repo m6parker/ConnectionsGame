@@ -9,6 +9,7 @@ let selectedWords = [];
 let groupedWords = [];
 let wordIndex = 0;
 let listIsFull = false;
+let overallScore = 0;
         
 function displayWords(){
     const groupContainer = document.querySelector('.word-group-container');
@@ -50,7 +51,8 @@ function checkAnswer(){
         message.innerHTML = 'select 4 words';
         return;
     }
-    message.innerHTML = `selected: ${selectedWords}`;
+    
+    message.innerHTML = 'incorrect';
 
     // if each word has the same index of wordGroups[] then they match
     // check group index of each word
@@ -63,23 +65,29 @@ function checkAnswer(){
             if(wordGroups[i].includes(word)){
                 score++;
                 console.log(word, score);
-                
             }else{
                 score = 0;
                 console.log('score:', score);
             }
         });
         if(score === 4){ winCategory(); break; }
+        if(score === 3){ message.innerHTML = 'one away'; } // todo finish
     }
 }
 
 function winCategory(){
     message.innerHTML = 'correct';
     score = 0;
+    overallScore++;
 
     // set the word buttons as .grouped
     highlightCorrectWords(selectedWords);
     unselectAllWords();
+
+    // check if all categories are found
+    if(overallScore === 4){
+        message.innerHTML = 'you win!';
+    }
 }
 
 function unselectAllWords(){
