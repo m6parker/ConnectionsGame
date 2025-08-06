@@ -15,11 +15,7 @@ function displayWords(){
 
     wordGroups.forEach((group, index) => {
         const groupDiv = document.createElement('div');
-        groupDiv.className = 'word-group';
-
-        // const groupTitle = document.createElement('h2');
-        // groupTitle.textContent = `Group ${index + 1}`;
-        // groupDiv.appendChild(groupTitle);
+        groupDiv.className = 'group';
 
         const wordGroup = document.createElement('div');
         wordGroup.className = 'group';
