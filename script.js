@@ -6,6 +6,7 @@ const wordGroups = [
     ];
 
 let selectedWords = [];
+let groupedWords = [];
 let wordIndex = 0;
 let listIsFull = false;
         
@@ -79,6 +80,28 @@ function checkAnswer(){
 function winCategory(){
     message.innerHTML = 'correct';
     score = 0;
+
+    // set the word buttons as .grouped
+    highlightCorrectWords(selectedWords);
+    unselectAllWords();
+}
+
+function unselectAllWords(){
+    document.querySelectorAll('.word').forEach(word =>{
+        word.classList.remove('selected');
+        selectedWords = [];
+    });
+}
+
+function highlightCorrectWords(words){
+    words.forEach(word =>{
+        // if button text matches word in selected array
+        document.querySelectorAll('.word').forEach(button =>{
+            if(button.textContent === word){
+                button.classList.add('grouped');
+            }
+        });
+    });
 }
 
 const submitButton = document.querySelector('.submit-button');
@@ -87,11 +110,8 @@ submitButton.addEventListener('click', () => checkAnswer());
 
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', () => {
-    document.querySelectorAll('.word').forEach(word =>{
-        word.classList.remove('selected');
-        selectedWords = [];
-        message.innerHTML = 'Find words that have something in common';
-    });
+    unselectAllWords();
+    message.innerHTML = 'Find words that have something in common';
 })
 
 displayWords();
