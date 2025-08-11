@@ -18,12 +18,19 @@ function displayWords(){
         const groupDiv = document.createElement('div');
         groupDiv.className = 'group';
 
+        // const groupCategory = document.createElement('h2');
+        // groupCategory.textContent = `Group ${index + 1}`;
+        // groupDiv.appendChild(groupCategory);
+
         const wordGroup = document.createElement('div');
         wordGroup.className = 'group';
         group.forEach(word => {
             const wordButton = document.createElement('div');
             wordButton.className = 'word';
             wordButton.textContent = word;
+
+            // todo: append in random order
+            // randomize()
             wordGroup.appendChild(wordButton);
             listIsFull = (selectedWords.length === 4) ? true : false; 
 
