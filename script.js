@@ -12,7 +12,19 @@ let listIsFull = false;
 let overallScore = 0;
 // let slotIndexes = []
 // let slotNumber = 1;
+let guesses = 4;
 
+const guessesContainer = document.querySelector('.guesses-container');
+function showGuesses(){
+    for(let i=0; i < guesses; i++){
+        console.log(guesses);
+        //create guesses things
+        const guessImg = document.createElement('div');
+        guessImg.className = `guess${i}`;
+        guessesContainer.appendChild(guessImg);
+
+    }
+}
 
 function shuffle(grid) {
     let flatGrid = grid.flat();
@@ -98,9 +110,7 @@ function checkAnswer(){
         message.style.color = 'blue';
         return;
     }
-    
-    message.innerHTML = 'incorrect';
-    message.style.color = 'red';
+    guesses--;
 
     // if each word has the same index of wordGroups[] then they match
     // check group index of each word
@@ -122,11 +132,30 @@ function checkAnswer(){
             winCategory(i);
             break;
         }
-        if(score === 3){ message.innerHTML = 'one away'; } // todo finish
+        if(score === 3){ message.innerHTML = 'one away'; }
+        else{
+            message.innerHTML = 'incorrect';
+            message.style.color = 'red';
+            // showGuesses();// if remaking guess things
+        }
+    }
+    // guesses--;
+    document.querySelector(`.guess${guesses}`).style.backgroundColor  = 'red';
+
+    if(guesses === 0){
+        loseGame();
     }
 }
 
+function loseGame(){
+    message.innerHTML = 'YOU LOSE';
+    message.style.color = 'red';
+    submitButton.setAttribute('disabled', true);
+    clearButton.setAttribute('disabled', true);
+}
+
 function winCategory(categoryIndex){
+    guesses++;
     message.innerHTML = 'correct';
     message.style.color = 'green';
     score = 0;
@@ -135,7 +164,7 @@ function winCategory(categoryIndex){
     // set the word buttons as .grouped
     highlightCorrectWords(selectedWords);
     // reveil category title
-    document.querySelector(`.group-title-${categoryIndex}`).style.display = 'block';
+    // document.querySelector(`.group-title-${categoryIndex}`).style.display = 'block'; //todo: show group names
     unselectAllWords();
 
     // check if all categories are found
@@ -163,9 +192,14 @@ function highlightCorrectWords(words){
     });
 }
 
-const submitButton = document.querySelector('.submit-button');
 const message = document.querySelector('.message');
+const submitButton = document.querySelector('.submit-button');
 submitButton.addEventListener('click', () => checkAnswer());
+
+const reloadButton = document.querySelector('.reset-button');
+reloadButton.addEventListener('click', () =>{
+    location.reload();
+});
 
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', () => {
@@ -174,3 +208,4 @@ clearButton.addEventListener('click', () => {
 })
 
 displayWords();
+showGuesses();

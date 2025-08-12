@@ -71,3 +71,20 @@ button:hover {
     background-color: rgb(65, 198, 149); */
     color:rgb(0, 81, 146);
 }
+
+.guesses-container{
+    display: flex;
+    justify-content: center;
+}
+
+.guess0,
+.guess1,
+.guess2,
+.guess3 {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(65, 198, 149);
+    border-radius: 30px;
+    margin: 10px;
+
+}
