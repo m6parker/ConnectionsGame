@@ -1,10 +1,3 @@
-const wordGroups = [
-        ["apple", "banana", "cherry", "date"],
-        ["cat", "dog", "bird", "fish"],
-        ["red", "blue", "green", "yellow"],
-        ["one", "two", "three", "four"]
-    ];
-
 let selectedWords = [];
 let groupedWords = [];
 let wordIndex = 0;
@@ -64,7 +57,8 @@ function displayWords(){
         const groupCategory = document.createElement('div');
         // todo: use category names instead of index
         // [index 1: "Name"] 
-        groupCategory.textContent = `Group ${index + 1}`;
+        // groupCategory.textContent = `Group ${index + 1}`;
+        groupCategory.textContent = catagoryNames[index];
         groupTitle.appendChild(groupCategoryContainer);
         groupCategoryContainer.appendChild(groupCategory);
         
@@ -164,7 +158,7 @@ function winCategory(categoryIndex){
     // set the word buttons as .grouped
     highlightCorrectWords(selectedWords);
     // reveil category title
-    // document.querySelector(`.group-title-${categoryIndex}`).style.display = 'block'; //todo: show group names
+    document.querySelector(`.group-title-${categoryIndex}`).style.display = 'block'; //todo: show group names
     unselectAllWords();
 
     // check if all categories are found
