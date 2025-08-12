@@ -8,12 +8,29 @@ body {
     background-color: pink;
 }
 
+.hidden{
+    display: none !important;
+}
+
 .container {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid black;
     text-align: center;
+}
+
+.pause-container{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.27);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    backdrop-filter: blur(10px);
+    flex-direction: column;
 }
 
 button {
@@ -36,6 +53,11 @@ button:hover {
     display: flex;
     width: 500px;
     justify-content: center;
+}
+
+.word-group-container{
+    justify-content: center;
+    display: grid;
 }
 
 .word{

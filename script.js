@@ -80,8 +80,10 @@ function displayWords(){
             wordButton.addEventListener('click', () => {
                if(!selectedWords.includes(wordButton.textContent)){
                     if(selectedWords.length === 4){ return; }
-                    wordButton.classList.add('selected');
-                    selectedWords.push(wordButton.textContent);
+                    if(!wordButton.classList.contains('grouped')){ 
+                        wordButton.classList.add('selected');
+                        selectedWords.push(wordButton.textContent);
+                    }
                }else{
                     wordButton.classList.remove('selected');
                     wordIndex = selectedWords.indexOf(wordButton.textContent);
@@ -165,6 +167,7 @@ function winCategory(categoryIndex){
     if(overallScore === 4){
         message.innerHTML = 'you win!';
         message.style.color = 'lime';
+        stopTimer();
     }
 }
 
@@ -186,6 +189,8 @@ function highlightCorrectWords(words){
     });
 }
 
+// ---------------- buttons ----------------------
+
 const message = document.querySelector('.message');
 const submitButton = document.querySelector('.submit-button');
 submitButton.addEventListener('click', () => checkAnswer());
@@ -199,7 +204,58 @@ const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', () => {
     unselectAllWords();
     message.innerHTML = 'Find words that have something in common';
-})
+});
+
+const pauseScreen = document.querySelector('.pause-container');
+const pauseButton = document.querySelector('.pause-button');
+pauseButton.addEventListener('click', () => {
+    pauseScreen.classList.toggle('hidden');
+    stopTimer();
+});
+
+const resumeButton = document.querySelector('.resume-button');
+resumeButton.addEventListener('click', () => {
+    pauseScreen.classList.toggle('hidden');
+    startTimer();
+});
+
+// ---------------- begin game ----------------------
+
 
 displayWords();
 showGuesses();
+
+// ---------------- timer ----------------------
+
+let startTime;
+let timerInterval;
+let elapsedTime = 0;
+const timerDisplay = document.querySelector('.timer');
+
+startTimer();
+
+function formatTime(ms) {
+    let date = new Date(ms);
+    let hours = date.getUTCHours().toString().padStart(2, '0');
+    let minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    let seconds = date.getUTCSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+function startTimer() {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(function() {
+        elapsedTime = Date.now() - startTime;
+        timerDisplay.textContent = formatTime(elapsedTime);
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    timerDisplay.textContent = '00:00:00';
+}
