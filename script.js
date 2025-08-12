@@ -6,6 +6,8 @@ let overallScore = 0;
 // let slotIndexes = []
 // let slotNumber = 1;
 let guesses = 4;
+const groupCategoryContainer = document.querySelector('.category-container');
+
 
 const guessesContainer = document.querySelector('.guesses-container');
 function showGuesses(){
@@ -46,33 +48,22 @@ function displayWords(){
     const groupContainer = document.querySelector('.word-group-container');
 
     shuffledArray.forEach((group, index) => {
-        const groupTitle = document.createElement('div');
-        groupTitle.className = `group-title-${index}`;
-        groupTitle.style.display = 'none';
 
+        // create the answers and hide them
+        const groupCategory = document.createElement('div');
+        groupCategory.className = `group-title-${index}`;
+        groupCategory.textContent = catagoryNames[index];
+        // groupCategory.style.visibility = 'none';
+        // groupCategory.style.height = '0px';
+
+        // create sections of 4
         const wordGroup = document.createElement('div');
         wordGroup.className = 'group';
-
-        const groupCategoryContainer = document.createElement('div');
-        const groupCategory = document.createElement('div');
-        // todo: use category names instead of index
-        // [index 1: "Name"] 
-        // groupCategory.textContent = `Group ${index + 1}`;
-        groupCategory.textContent = catagoryNames[index];
-        groupTitle.appendChild(groupCategoryContainer);
-        groupCategoryContainer.appendChild(groupCategory);
-        
-        // shuffle(group);
 
         group.forEach(word => {
             const wordButton = document.createElement('div');
             wordButton.className = 'word';
             wordButton.textContent = word;
-            // slotIndexes.push(slotNumber);
-            // slotNumber++;
-
-            // todo: append in random order
-            // randomize()
             wordGroup.appendChild(wordButton);
 
             listIsFull = (selectedWords.length === 4) ? true : false; 
@@ -93,11 +84,9 @@ function displayWords(){
             });
         });
 
-        groupContainer.appendChild(groupTitle);
         groupContainer.appendChild(wordGroup);
+        groupCategoryContainer.appendChild(groupCategory);
     });
-    // shuffle(slotIndexes)
-    // console.log('SlotIndexes: ', slotIndexes)
 }
 
 function checkAnswer(){
@@ -152,15 +141,16 @@ function loseGame(){
 
 function winCategory(categoryIndex){
     guesses++;
-    message.innerHTML = 'correct';
+    message.innerHTML = 'correct!';
     message.style.color = 'green';
     score = 0;
     overallScore++;
 
     // set the word buttons as .grouped
     highlightCorrectWords(selectedWords);
+    
     // reveil category title
-    document.querySelector(`.group-title-${categoryIndex}`).style.display = 'block'; //todo: show group names
+    document.querySelector(`.group-title-${categoryIndex}`).classList.add('expanded');
     unselectAllWords();
 
     // check if all categories are found

@@ -85,21 +85,53 @@ button:hover {
 }
 
 .grouped:hover{
-    background-color: rgba(108, 206, 255, 0.761);
+    background-color: rgba(108, 206, 255, 0.761); /* use opacity instead */
 }
 
 .grouped{
     border: 2px solid rgb(0, 81, 146);
     background-color: rgb(108, 206, 255);
 }
+/* 
+.group-title-1.grouped{
+    border: 2px solid rgb(20, 73, 0);
+    background-color: rgb(39, 146, 0);
+}
+
+.group-title-2.grouped{
+    border: 2px solid rgb(126, 0, 42);
+    background-color: rgb(226, 0, 166);
+}
+
+.group-title-3.grouped{
+    border: 2px solid rgb(137, 123, 0);
+    background-color: rgb(233, 206, 0);
+} */
 
 .group-title-0,
 .group-title-1,
 .group-title-2,
 .group-title-3{
-    /* border: 2px solid rgb(0, 73, 51);
-    background-color: rgb(65, 198, 149); */
-    color:rgb(0, 81, 146);
+    padding: 0px;
+    margin: 0px;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s;
+    transition: padding 0.5s;
+}
+
+.expanded{
+    height: 25px;
+    border: 2px solid rgb(0, 73, 51);
+    background-color: rgb(65, 198, 149);
+    color: white;
+    padding: 15px;
+    border-radius: 30px;
+    align-items: center;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    user-select: none;
 }
 
 .guesses-container{
