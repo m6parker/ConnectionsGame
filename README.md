@@ -7,12 +7,6 @@ Based on the [NYTimes](https://www.nytimes.com/crosswords) daily games [Connecti
 - create 4 categories of common words
 - all words must belong to one catagory
 
-### ToDo:
 
-- 'one away' clue
-- category name reveal
-- scramble groups
-- limited / count guesses
-
-<img width="640" height="485" alt="connectionsUI2" src="https://github.com/user-attachments/assets/fba3a0d3-0b7d-40e6-aada-5762c3eae3d9" />
-<img width="644" height="500" alt="connectionsUI" src="https://github.com/user-attachments/assets/9ea618b7-f520-4a86-a01c-47754e933387" />
+<img width="615" height="684" alt="connectionsUI2(updated)" src="https://github.com/user-attachments/assets/6f72fc24-fead-4ea8-bb2a-be0e8406a07d" />
+<img width="612" height="832" alt="connectionsUI(updated)" src="https://github.com/user-attachments/assets/b8c7f639-8b1f-4713-ae52-34d3ce2958fd" />
