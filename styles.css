@@ -61,7 +61,7 @@ button:hover {
 }
 
 .word{
-    border: 2px solid rgb(0, 73, 51);
+    border: 4px solid rgb(0, 73, 51);
     background-color: rgb(65, 198, 149);
     border-radius: 10px;
     width: 100px;
@@ -72,6 +72,7 @@ button:hover {
     justify-content: center;
     display: flex;
     align-items: center;
+    transition: background-color 0.2s;
 }
 
 .word:hover{
@@ -80,7 +81,7 @@ button:hover {
 }
 
 .selected{
-    border: 2px solid rgb(65, 198, 149);
+    border: 4px solid rgb(65, 198, 149);
     background-color: rgb(255, 255, 255);
 }
 
@@ -88,25 +89,25 @@ button:hover {
     background-color: rgba(108, 206, 255, 0.761); /* use opacity instead */
 }
 
-.grouped{
-    border: 2px solid rgb(0, 81, 146);
+.blue.grouped, .group-title-3.expanded{
+    border: 4px solid rgb(0, 81, 146);
     background-color: rgb(108, 206, 255);
 }
-/* 
-.group-title-1.grouped{
-    border: 2px solid rgb(20, 73, 0);
-    background-color: rgb(39, 146, 0);
+
+.green.grouped, .group-title-2.expanded{
+    border: 4px solid rgb(20, 73, 0);
+    background-color: rgb(93, 211, 50);
 }
 
-.group-title-2.grouped{
-    border: 2px solid rgb(126, 0, 42);
-    background-color: rgb(226, 0, 166);
+.red.grouped, .group-title-1.expanded{
+    border: 4px solid rgb(126, 0, 42);
+    background-color: rgb(255, 23, 74);
 }
 
-.group-title-3.grouped{
-    border: 2px solid rgb(137, 123, 0);
-    background-color: rgb(233, 206, 0);
-} */
+.yellow.grouped, .group-title-0.expanded{
+    border: 4px solid rgb(137, 123, 0);
+    background-color: rgb(255, 228, 22);
+}
 
 .group-title-0,
 .group-title-1,
@@ -122,8 +123,6 @@ button:hover {
 
 .expanded{
     height: 25px;
-    border: 2px solid rgb(0, 73, 51);
-    background-color: rgb(65, 198, 149);
     color: white;
     padding: 15px;
     border-radius: 30px;

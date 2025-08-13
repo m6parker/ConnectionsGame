@@ -147,7 +147,7 @@ function winCategory(categoryIndex){
     overallScore++;
 
     // set the word buttons as .grouped
-    highlightCorrectWords(selectedWords);
+    highlightCorrectWords(selectedWords, categoryIndex);
     
     // reveil category title
     document.querySelector(`.group-title-${categoryIndex}`).classList.add('expanded');
@@ -168,11 +168,19 @@ function unselectAllWords(){
     });
 }
 
-function highlightCorrectWords(words){
+function highlightCorrectWords(words, category){
     words.forEach(word =>{
         // if button text matches word in selected array
         document.querySelectorAll('.word').forEach(button =>{
             if(button.textContent === word){
+                // check which index it has from answers
+                // assign color in switch
+                switch(category){
+                    case 0: button.classList.add('yellow'); break;
+                    case 1: button.classList.add('red');    break;
+                    case 2: button.classList.add('green');  break;
+                    case 3: button.classList.add('blue');   break;
+                }
                 button.classList.add('grouped');
             }
         });
